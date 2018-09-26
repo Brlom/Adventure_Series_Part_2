@@ -40,7 +40,7 @@ To enable inquirer to do its job, the data in the game has to be held in a parti
 - it can also have a `logRoom` property, which will console log anything you want on choosing that option - use this for debugging purposes!
 - each choice also needs to be an object
 - it should have a `text` property, which is what will be displayed on the screen for the user to select, e.g. _'Go upstairs'_ or _'Eat an orange'_
-- it should have a `targetRoom` property, which is the key of the next room you want to show. If you don't have a `targetRoom`, the game will end
+- it should have a `targetRoomName` property, which is the key of the next room you want to show. If you don't have a `targetRoom`, the game will end
 - it can also have an `invokeChoice` property, which is a function you want to call on choosing that option - make sure you don't duplicate behaviour you applied in your target's `invokeRoom` function
 - it can also have a `logChoice` property, which again, will console log anything you like debugging purposes.
 
