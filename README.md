@@ -35,10 +35,11 @@ To enable inquirer to do its job, the data in the game has to be held in a parti
 
 - each room will need a unique key name - you'll refer to this, so make it logical! You need to have one called `startGame` - that's what triggers on `npm start`
 - it will need a `message` property, which is what will be displayed to the user if that room is called (think 'kitchen' or 'interactWithOranges')
-- it will need a `choices` property, which should be an array of _choices_
+- it will need a `choices` property, which should be an array of _choices_ (described below)
 - it can also have an `invokeRoom` property, which is a function you want to call on the player going to this room
 - it can also have a `logRoom` property, which will console log anything you want on choosing that option - use this for debugging purposes!
-- each choice also needs to be an object
+
+- each _choice_ also needs to be an object
 - it should have a `text` property, which is what will be displayed on the screen for the user to select, e.g. _'Go upstairs'_ or _'Eat an orange'_
 - it should have a `targetRoomName` property, which is the key of the next room you want to show. If you don't have a `targetRoom`, the game will end
 - it can also have an `invokeChoice` property, which is a function you want to call on choosing that option - make sure you don't duplicate behaviour you applied in your target's `invokeRoom` function
