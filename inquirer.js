@@ -3,8 +3,10 @@ const getRooms = require("./rooms");
 
 const goToNextRoom = async (game, roomName = "startGame") => {
   const roomsPreChoice = getRooms(game);
-  const thisRoom = roomsPreChoice[roomName];
+  let thisRoom = roomsPreChoice[roomName];
   if (thisRoom.invoke) thisRoom.invoke();
+  const roomsPostInvoke = getRooms(game);
+  thisRoom = roomsPostInvoke[roomName];
   if (thisRoom.log) console.log(`room log ${roomName}: ${thisRoom.log}`);
   const inquiry = [
     {
