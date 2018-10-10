@@ -1,5 +1,5 @@
 const Game = require("./entities/game");
 
-const newGame = new Game("Give your game a name here!");
+const newGame = new Game("test game");
 
 newGame.startGame();

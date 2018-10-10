@@ -5,50 +5,8 @@ function getRooms(game) {
       message: `Welcome to the ${game.gameName}! What do you want to do?`,
       choices: [
         {
-          text: "Watch TV?",
-          targetRoomName: "watchTV"
-        },
-        {
-          text: "Play game?",
-          targetRoomName: "playGame",
-          invoke: () => game.incrementTimesPlayed()
-        },
-        {
-          text: "Not play?",
-          log: `player was playing for ${game.hoursPast} hours`,
-          targetRoomName: null
-        }
-      ]
-    },
-    watchTV: {
-      message: "Looks like there is nothing on. Play game instead?",
-      invoke: () => game.increaseHours(1),
-      choices: [
-        {
-          text: "Yes",
-          invoke: () => game.incrementTimesPlayed(),
-          targetRoomName: "playGame"
-        },
-        {
-          text: "No",
-          log: `player was playing for ${game.hoursPast} hours`,
-          targetRoomName: null
-        }
-      ]
-    },
-    playGame: {
-      message: `Well done, you have played the game ${
-        game.timesPlayed
-      } times! Restart?`,
-      invoke: () => game.increaseHours(1),
-      choices: [
-        {
-          text: "Yes",
-          targetRoomName: "startGame"
-        },
-        {
-          text: "No",
-          log: `player was playing for ${game.hoursPast} hours`,
+          text: "Looks like you need some more choices...",
+          log: `player has completed ${game.gameName}`,
           targetRoomName: null
         }
       ]
