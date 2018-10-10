@@ -1,4 +1,4 @@
-const goToNextRoom = require("../../inquirer");
+const goToNextRoom = require("../inquirer");
 
 const Game = function(gameName) {
   this.gameName = gameName;

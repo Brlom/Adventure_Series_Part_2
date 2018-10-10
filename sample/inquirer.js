@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const getRooms = require("./rooms");
 
 const goToNextRoom = async (game, roomName = "startGame") => {
+  console.log({ roomName });
   const roomsPreChoice = getRooms(game);
   let thisRoom = roomsPreChoice[roomName];
   if (thisRoom.invoke) thisRoom.invoke();
@@ -23,8 +24,7 @@ const goToNextRoom = async (game, roomName = "startGame") => {
   if (choice.invoke) choice.invoke();
   if (choice.log)
     console.log(
-      `choice log on target ${`${choice.targetRoom.toUpperCase()} LOG` ||
-        "FINISH GAME LOG"}: ${choice.log}`
+      `${(choice.targetRoom || "finish game").toUpperCase()} LOG: ${choice.log}`
     );
   if (choice.targetRoomName) goToNextRoom(game, choice.targetRoomName);
   else console.log("Thanks for playing!");

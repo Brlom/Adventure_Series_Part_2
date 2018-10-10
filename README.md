@@ -21,10 +21,7 @@ Object Oriented Programming is a natural fit for this sort of structure. The _st
 
 First, give the sample project a go. Run `npm install` and `npm run sample`. Get a feeling of how the choices you make are affecting the Game object properties.
 
-We'll kick off by creating the objects and methods we'll need to make a Haunted House choose your own adventure game.
-
-- Each object should be tested so that when you instantiate it with the 'new' keyword it is what you expect.
-- Each method should be tested so you can see how the object's properties have changed when it has been called.
+We'll kick off by creating the objects and methods we'll need to make a Haunted House choose your own adventure game. Each object should be tested so that when you instantiate it with the 'new' keyword it is what you expect. Each method should be tested so you can see how the object's properties have changed when it has been called.
 
 1. Let's test what happens when we create a new Game. Change the name in the `play.js` file, then open up your `spec/game.spec.js` file. Complete the test so that you know the Game is created with the correct name property.
 
