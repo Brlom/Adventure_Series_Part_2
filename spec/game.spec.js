@@ -5,7 +5,7 @@ describe("GAME system", () => {
   describe("game", () => {
     it("creates an new Game object with the correct name", () => {
       const newGame = new Game("Thumbelina");
-      expect(newGame.gameName).to.equal("The Haunt");
+      expect(newGame.gameName).to.equal("Thumbelina");
     });
     it("creates an new player object set to default", () => {
       const newGame = new Game("Thumbelina");
@@ -44,11 +44,11 @@ describe("GAME system", () => {
       const newGame = new Game("Thumbelina");
       expect(newGame.playerInventory).to.eql([]);
     });
-    it("checks if playerInventory is increased when passed an item", () => {
+    it("checks if playerInventory is increased when passed items", () => {
       const newGame = new Game("Thumbelina");
       newGame.increasePlayerInventory("lantern");
-      newGame.increasePlayerInventory("bubble wand");
-      expect(newGame.playerInventory).to.eql(["lantern", "bubble wand"]);
+      // newGame.increasePlayerInventory("bubble wand", "cocoa beans");
+      expect(newGame.playerInventory).to.eql(["lantern" /* , "bubble wand", "cocoa beans" */]);
     });
     it("checks if playerInventory is decreased when passed an item", () => {
       const newGame = new Game("Thumbelina");

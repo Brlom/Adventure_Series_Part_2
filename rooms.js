@@ -64,6 +64,12 @@ function getRooms(game) {
       choices: [
         {
           text: "I need to get out of here",
+          invoke: function () { 
+            game.changePlayerFear(-40);
+          },
+          invoke: function () {
+            game.increasePlayerInventory("Apple", "loaf of bread", "handkerchief", "wine")
+          },
           targetRoomName: "pathToCreepyLady"
         },
         {
@@ -86,10 +92,7 @@ function getRooms(game) {
       ]
     },
     pathToCreepyLady: {
-      message: 'You\'re walking along a sandy path, and are stopped by an ugly beggar lady who asks for something to eat. What would you like to do?',
-      // invoke: function () { should not decrease when coming from outside
-      //   game.changePlayerFear(-40);
-      // },
+      message: `You brought some stuff from home. Your inventory is now: ${game.playerInventory}.You\'re walking along a sandy path, and are stopped by an ugly beggar lady who asks for something to eat. What would you like to do?`,
       choices: [
         {
           text: "Ignore her, and keep walking",
