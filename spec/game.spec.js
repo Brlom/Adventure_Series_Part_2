@@ -47,14 +47,14 @@ describe("GAME system", () => {
     it("checks if playerInventory is increased when passed items", () => {
       const newGame = new Game("Thumbelina");
       newGame.increasePlayerInventory("lantern");
-      // newGame.increasePlayerInventory("bubble wand", "cocoa beans");
-      expect(newGame.playerInventory).to.eql(["lantern" /* , "bubble wand", "cocoa beans" */]);
+      newGame.increasePlayerInventory("bubble wand", "cocoa beans");
+      expect(newGame.playerInventory).to.eql(["lantern", "bubble wand", "cocoa beans"]);
     });
-    it("checks if playerInventory is decreased when passed an item", () => {
+    it("checks if playerInventory is decreased when player uses items", () => {
       const newGame = new Game("Thumbelina");
-      newGame.increasePlayerInventory("bow & arrow", "cycle");
+      newGame.increasePlayerInventory("bow & arrow", "rattlesnake", "cycle");
       newGame.decreasePlayerInventory("cycle");
-      expect(newGame.playerInventory).to.eql(["bow & arrow"]);
+      expect(newGame.playerInventory).to.eql(["bow & arrow", "rattlesnake"]);
     });
     it("resets playerName, playerFear, tooScared and playerInventory to startup values", () => {
       const newGame = new Game("Thumbelina");

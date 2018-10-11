@@ -68,7 +68,7 @@ function getRooms(game) {
             game.changePlayerFear(-40);
           },
           invoke: function () {
-            game.increasePlayerInventory("Apple", "loaf of bread", "handkerchief", "wine")
+            game.increasePlayerInventory("Apple", "loaf of bread", "handkerchief", "wine");
           },
           targetRoomName: "pathToCreepyLady"
         },

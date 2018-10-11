@@ -29,14 +29,16 @@ Game.prototype.checkIfTooScared = function(num) {
   };
 };
 
-Game.prototype.increasePlayerInventory = function(item) {
-  this.playerInventory.push(item);
+Game.prototype.increasePlayerInventory = function(...item) {
+  for (let i = 0; i < item.length; i++) {
+    this.playerInventory.push(item[i]);
+  }
 };
 
 Game.prototype.decreasePlayerInventory = function(item) {
   let position = this.playerInventory.indexOf(item);
   if (position > -1) {
-    this.playerInventory.splice(item, 1);
+    this.playerInventory.splice(position, 1);
   };
 };
 
