@@ -5,6 +5,7 @@ const Game = function(gameName) {
   this.playerName = 'default';
   this.playerFear = 0;
   this.tooScared = false;
+  this.playerInventory = [];
 };
 
 Game.prototype.startGame = function() {
@@ -26,6 +27,24 @@ Game.prototype.checkIfTooScared = function(num) {
   } else {
     this.tooScared = false;
   };
+};
+
+Game.prototype.increasePlayerInventory = function(item) {
+  this.playerInventory.push(item);
+};
+
+Game.prototype.decreasePlayerInventory = function(item) {
+  let position = this.playerInventory.indexOf(item);
+  if (position > -1) {
+    this.playerInventory.splice(item, 1);
+  };
+};
+
+Game.prototype.resetGame = function() {
+  this.playerName = 'default';
+  this.playerFear = 0;
+  this.tooScared = false;
+  this.playerInventory = [];
 };
 
 module.exports = Game;
