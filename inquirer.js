@@ -23,7 +23,7 @@ const goToNextRoom = async (game, roomName = "startGame") => {
   if (choice.invoke) choice.invoke();
   if (choice.log)
     console.log(
-      `choice log on target ${`${choice.targetRoom.toUpperCase()} LOG` ||
+      `choice log on target ${`${choice.targetRoomName.toUpperCase()} LOG` ||
         "FINISH GAME LOG"}: ${choice.log}`
     );
   if (choice.targetRoomName) goToNextRoom(game, choice.targetRoomName);
