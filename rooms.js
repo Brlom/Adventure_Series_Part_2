@@ -162,11 +162,11 @@ function getRooms(game, player) {
           },
       choices: [
         {
-          text: "", 
-          targetRoomName: null
+          text: "You thank her, and continue on your way", 
+          targetRoomName: "barleycorn"
         },
         {
-          text: "I want to check my inventory", 
+          text: "Want to check your inventory?", 
           targetRoomName: "inventory"
         },
       ]
@@ -177,6 +177,32 @@ function getRooms(game, player) {
         {
           text: "", 
           targetRoomName: null
+        },
+      ]
+    },
+    barleycorn: {
+      message: "As you are walking along the path, you notice the barleycorn is moving. You..", 
+      choices: [
+        {
+          text: "get scared and throw it far away.",
+          targetRoomName: "path"
+        }, 
+        {
+          text: "look closer at the barleycorn", 
+          targetRoomName: "thumbelina"
+        },
+      ]
+    },
+    thumbelina: {
+      message: "The barleycorn blossoms, and as the petals start to drop you realise that there appears to be a tiny little girl inside.", 
+      choices: [
+        {
+          text: "",
+          targetRoomName: ""
+        }, 
+        {
+          text: "", 
+          targetRoomName: ""
         },
       ]
     },
