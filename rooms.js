@@ -1,5 +1,5 @@
 // Here is where you add 'rooms' to your game. Make sure they abide by the syntax described in the README, else it *will not work*.
-function getRooms(game) {
+function getRooms(game, player) {
   return {
     startGame: {
       message: `Welcome to ${game.gameName}! Would you like to go on an adventure?`,
@@ -19,12 +19,12 @@ function getRooms(game) {
       choices: [
         {
           text: 'Grandma Chuckles: a little old woman who never had any children of her own, and has therefore developed a small drinking habit',
-          invoke: () => game.changePlayerName('Grandma Chuckles'),
+          invoke: () => player.changePlayerName('Grandma Chuckles'),
           targetRoomName: "andSoItBegins"
         },
         {
           text: 'Grandfather Chuckles: a charming old man who loves to tell stories and crack horrible jokes',
-          invoke: () => game.changePlayerName('Grandpa Chuckles'),
+          invoke: () => player.changePlayerName('Grandpa Chuckles'),
           targetRoomName: "andSoItBegins"
         },
         {
@@ -34,7 +34,7 @@ function getRooms(game) {
       ]
     },
     andSoItBegins: {
-      message: `Welcome to the game, ${game.playerName}. You are currently in your house. Would you like to take a look outside?`,
+      message: `Welcome to the game, ${player.name}. You are currently in your house. Would you like to take a look outside?`,
       choices: [
         {
           text: "Let's go already.",
@@ -47,7 +47,7 @@ function getRooms(game) {
       ]
     },
     bedroom: {
-      message: `Have a good nap, ${game.playerName}. .... Good morning, sleepy head! Are you ready to get going?`,
+      message: `Have a good nap, ${player.name}. .... Good morning, sleepy head! Are you ready to get going?`,
       choices: [
         {
           text: "Come on then.",
@@ -60,15 +60,15 @@ function getRooms(game) {
       ]
     },
     bedroom2: {
-      message: `You are currently ${game.playerFear} procent scared, and stay under the bed for 10 hours. Would you like to continue your adventure?`,
+      message: `You are currently ${player.fear} procent scared, and stay under the bed for 10 hours. Would you like to continue your adventure?`,
       choices: [
         {
           text: "I need to get out of here",
           invoke: function () { 
-            game.changePlayerFear(-40);
+            player.changePlayerFear(-40);
           },
           invoke: function () {
-            game.increasePlayerInventory("Apple", "loaf of bread", "handkerchief", "wine");
+            player.increasePlayerInventory("Apple", "loaf of bread", "handkerchief", "wine");
           },
           targetRoomName: "pathToCreepyLady"
         },
@@ -84,7 +84,7 @@ function getRooms(game) {
         {
           text: "Sure",
           invoke: function () {
-            game.increasePlayerInventory("apple", "loaf of bread", "handkerchief", "wine");
+            player.increasePlayerInventory("apple", "loaf of bread", "handkerchief", "wine");
           },
           targetRoomName: "pathToCreepyLady"
         },
@@ -95,7 +95,7 @@ function getRooms(game) {
       ]
     },
     pathToCreepyLady: {
-      message: `You brought some stuff from home. Your inventory is now: ${game.playerInventory}.You\'re walking along a sandy path, and are stopped by an ugly beggar lady who asks for something to eat. What would you like to do?`,
+      message: `You brought some stuff from home. Your inventory is now: ${player.inventory}.You\'re walking along a sandy path, and are stopped by an ugly beggar lady who asks for something to eat. What would you like to do?`,
       choices: [
         {
           text: "Ignore her, and keep walking",
@@ -104,7 +104,7 @@ function getRooms(game) {
         {
           text: "Give her an apple you brought from home",
           invoke: function() {
-            game.decreasePlayerInventory("apple");
+            player.decreasePlayerInventory("apple");
           },
           targetRoomName: "gift"
         },
@@ -113,7 +113,7 @@ function getRooms(game) {
     home: {
       message: 'Ah, good to be back home. But what\'s this! The place is trashed..',
       invoke: function () {
-        game.changePlayerFear(10);
+        player.changePlayerFear(10);
       },
       choices: [
         {
@@ -123,7 +123,7 @@ function getRooms(game) {
         {
           text: "You're super scared, and go hide under the bed",
           invoke: function () {
-            game.changePlayerFear(40);
+            player.changePlayerFear(40);
           },
           targetRoomName: "bedroom2"
         },
@@ -158,7 +158,7 @@ function getRooms(game) {
     gift: {
       message: "The old lady thanks you for your kindness, and gifts you with a barleycorn.",
       invoke: function() {
-            game.increasePlayerInventory("barleycorn");
+            player.increasePlayerInventory("barleycorn");
           },
       choices: [
         {
@@ -172,7 +172,7 @@ function getRooms(game) {
       ]
     },
     inventory: {
-      message: `Your inventory is currently ${game.playerInventory}`,
+      message: `Your inventory is currently ${player.inventory}`,
       choices: [
         {
           text: "", 
@@ -186,7 +186,7 @@ function getRooms(game) {
         {
           text: 'Yes, bring it on!',
           invoke: function() {
-            game.reset();
+            player.reset();
           },
           targetRoomName: "players"
         },
