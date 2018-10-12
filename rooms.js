@@ -84,7 +84,7 @@ function getRooms(game) {
         {
           text: "Sure",
           invoke: function () {
-            game.increasePlayerInventory("Apple", "loaf of bread", "handkerchief", "wine");
+            game.increasePlayerInventory("apple", "loaf of bread", "handkerchief", "wine");
           },
           targetRoomName: "pathToCreepyLady"
         },
@@ -103,6 +103,12 @@ function getRooms(game) {
         },
         {
           text: "Give her an apple you brought from home",
+          invoke: function() {
+            game.decreasePlayerInventory("apple");
+          },
+          invoke: function() {
+            game.increasePlayerInventory("barleycorn");
+          },
           targetRoomName: "gift"
         },
       ]
@@ -135,6 +141,28 @@ function getRooms(game) {
         },
         {
           text: "I'm done for now",
+          targetRoomName: null
+        },
+      ]
+    },
+    dragon: {
+      message: 'The old lady turns into a dragon, and blows fire at you! dun, dun, dun.. you died from your extensive burns',
+      choices: [
+        {
+          text: "I would like to play again",
+          targetRoomName: "reset"
+        },
+        {
+          text: "I'm done for now",
+          targetRoomName: null
+        },
+      ] 
+    },
+    gift: {
+      message: `The old lady thanks you for your kindness, and gifts you with a barleycorn. Your inventory is now: ${game.playerInventory}`,
+      choices: [
+        {
+          text: "blablabla", 
           targetRoomName: null
         },
       ]
