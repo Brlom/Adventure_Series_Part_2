@@ -1,52 +1,47 @@
 const goToNextRoom = require("../inquirer");
 
-const Game = function(gameName) {
-  this.gameName = gameName;
-  this.playerName = 'default';
-  this.playerFear = 0;
-  this.tooScared = false;
-  this.playerInventory = [];
-};
-
-Game.prototype.startGame = function() {
-  goToNextRoom(this);
-};
-
-Game.prototype.changePlayerName = function(name) {
-  this.playerName = name;
-};
-
-Game.prototype.changePlayerFear = function(amount) {
-  if (this.playerFear === 0 && amount < 0) return 0;   
-  this.playerFear += amount;
-};
-
-Game.prototype.checkIfTooScared = function(num) {
-  if (this.playerFear >= num) {
-    this.tooScared = true;
-  } else {
+class Game {
+  constructor(gameName) {
+    this.gameName = gameName;
+    this.playerName = 'default';
+    this.playerFear = 0;
     this.tooScared = false;
-  };
-};
-
-Game.prototype.increasePlayerInventory = function(...item) {
-  for (let i = 0; i < item.length; i++) {
-    this.playerInventory.push(item[i]);
+    this.playerInventory = [];
   }
-};
-
-Game.prototype.decreasePlayerInventory = function(item) {
-  let position = this.playerInventory.indexOf(item);
-  if (position > -1) {
-    this.playerInventory.splice(position, 1);
+  startGame() {
+    goToNextRoom(this);
+  }
+  changePlayerName(name) {
+    this.playerName = name;
+  }
+  changePlayerFear(amount) {
+    if (this.playerFear === 0 && amount < 0) return 0;   
+    this.playerFear += amount;
+  }
+  checkIfTooScared(num) {
+    if (this.playerFear >= num) {
+      this.tooScared = true;
+    } else {
+      this.tooScared = false;
+    };    
+  }
+  increasePlayerInventory(...item) {
+    for (let i = 0; i < item.length; i++) {
+      this.playerInventory.push(item[i]);
+    };
+  }
+  decreasePlayerInventory(item) {
+    let position = this.playerInventory.indexOf(item);
+    if (position > -1) {
+      this.playerInventory.splice(position, 1);
+    };
+  }
+  reset() {
+    this.playerName = 'default';
+    this.playerFear = 0;
+    this.tooScared = false;
+    this.playerInventory = [];
   };
-};
-
-Game.prototype.resetGame = function() {
-  this.playerName = 'default';
-  this.playerFear = 0;
-  this.tooScared = false;
-  this.playerInventory = [];
-};
+}
 
 module.exports = Game;

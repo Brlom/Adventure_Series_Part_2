@@ -83,6 +83,9 @@ function getRooms(game) {
       choices: [
         {
           text: "Sure",
+          invoke: function () {
+            game.increasePlayerInventory("Apple", "loaf of bread", "handkerchief", "wine");
+          },
           targetRoomName: "pathToCreepyLady"
         },
         {
@@ -141,6 +144,9 @@ function getRooms(game) {
       choices: [
         {
           text: 'Yes, bring it on!',
+          invoke: function() {
+            game.reset();
+          },
           targetRoomName: "players"
         },
         {
