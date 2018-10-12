@@ -106,9 +106,6 @@ function getRooms(game) {
           invoke: function() {
             game.decreasePlayerInventory("apple");
           },
-          invoke: function() {
-            game.increasePlayerInventory("barleycorn");
-          },
           targetRoomName: "gift"
         },
       ]
@@ -159,10 +156,26 @@ function getRooms(game) {
       ] 
     },
     gift: {
-      message: `The old lady thanks you for your kindness, and gifts you with a barleycorn. Your inventory is now: ${game.playerInventory}`,
+      message: "The old lady thanks you for your kindness, and gifts you with a barleycorn.",
+      invoke: function() {
+            game.increasePlayerInventory("barleycorn");
+          },
       choices: [
         {
-          text: "blablabla", 
+          text: "", 
+          targetRoomName: null
+        },
+        {
+          text: "I want to check my inventory", 
+          targetRoomName: "inventory"
+        },
+      ]
+    },
+    inventory: {
+      message: `Your inventory is currently ${game.playerInventory}`,
+      choices: [
+        {
+          text: "", 
           targetRoomName: null
         },
       ]

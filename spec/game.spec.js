@@ -56,6 +56,15 @@ describe("GAME system", () => {
       newGame.decreasePlayerInventory("cycle");
       expect(newGame.playerInventory).to.eql(["bow & arrow", "rattlesnake"]);
     });
+    it("should return correct playerInventory when a decrease and increase happen right after each other", () => {
+      const newGame = new Game("Thumbelina");
+      newGame.increasePlayerInventory("apple", "loaf of bread", "handkerchief", "wine");
+      expect(newGame.playerInventory).to.eql(["apple", "loaf of bread", "handkerchief", "wine"]);
+      newGame.decreasePlayerInventory("apple");
+      expect(newGame.playerInventory).to.eql(["loaf of bread", "handkerchief", "wine"]);
+      newGame.increasePlayerInventory("barley corn")
+      expect(newGame.playerInventory).to.eql(["loaf of bread", "handkerchief", "wine", "barley corn"])
+    });
     it("resets playerName, playerFear, tooScared and playerInventory to startup values", () => {
       const newGame = new Game("Thumbelina");
       expect(newGame.playerName).to.equal("default");
